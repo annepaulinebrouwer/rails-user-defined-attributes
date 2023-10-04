@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_29_115635) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_29_120252) do
   create_table "batteries", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_115635) do
     t.integer "attribute_of_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "data_type"
     t.index ["attribute_of_type", "attribute_of_id"], name: "index_custom_attributes_on_attribute_of"
   end
 
