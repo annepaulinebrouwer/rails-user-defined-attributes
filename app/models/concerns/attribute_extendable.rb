@@ -5,15 +5,16 @@ module AttributeExtendable
     has_many :custom_attributes, as: :attribute_of, dependent: :destroy
 
     def get_custom_attribute(key)
-      value = custom_attributes.where(key:)&.last&.value
-      data_type = custom_attributes.where(key:)&.last&.data_type
+      custom_attr = custom_attributes.where(key:)&.last
+      value = custom_attr&.value
+      data_type = custom_attr&.data_type
       return value if data_type == 'String'
 
       to_data_type(value, data_type)
     end
 
     def set_custom_attribute(key, value)
-      attr = custom_attributes.find_or_initialize_by(key: key)
+      attr = custom_attributes.find_or_initialize_by(key:)
       attr.update(value: value.to_s, data_type: value.class)
     end
 
